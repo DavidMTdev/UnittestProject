@@ -30,7 +30,7 @@ async def update(id: PyObjectId, body: Article = Body(...)):
     if ItemExists(id) is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Article {id} not found")
 
-    db.articles.update_one({"_id": id}, {"$set": body.dict()})
+    db.articles.update_one({"_id": id}, {"$set": body.dict(by_alias=True)})
 
 @router.delete("/{id}", response_description="Delete a article", status_code=status.HTTP_204_NO_CONTENT)
 async def delete(id: PyObjectId):
