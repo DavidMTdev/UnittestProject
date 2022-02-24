@@ -34,6 +34,7 @@ class TestApi(TestCase):
         self.reqGetbyId = requests.get(f'{self.url}/{self.newArticle.id}')
         self.article = Article(**self.reqGetbyId.json())
 
+        self.dataUpdated['_id'] = str(self.newArticle.id)
         self.reqUpdated = requests.put(f'{self.url}/{self.newArticle.id}', json=self.dataUpdated)
         self.reqGetAfterUpdate = requests.get(f'{self.url}/{self.newArticle.id}')
 
