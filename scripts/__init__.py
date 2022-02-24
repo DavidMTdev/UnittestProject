@@ -36,6 +36,7 @@ def init_EdgeDriver():
     return scrapper 
 
 def run():
+    # Décommenter pour utilise le Chrome Driver et commenter scrapper = init_EdgeDriver()
     # scrapper = init_ChromeDriver()
     scrapper = init_EdgeDriver()
     runScrapper(scrapper)
